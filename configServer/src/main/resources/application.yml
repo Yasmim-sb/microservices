@@ -1,0 +1,24 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/microservices?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Yasmim-sb/erudio-config-server
+          default-label: main
+          search-paths:
+            - 'greeting-service*'
